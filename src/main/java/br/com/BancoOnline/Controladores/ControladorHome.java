@@ -1,24 +1,49 @@
 package br.com.BancoOnline.Controladores;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
-
+import java.io.Serializable;
 
 @Named
-@RequestScoped
-public class ControladorHome {
+@ViewScoped
+public class ControladorHome implements Serializable {
 
-
-    private String text = "Hello World!";
+    private String usuario;
+    private String saldo;
 
     @PostConstruct
-    public void initialize() {
-        System.out.println( " was constructed");
+    public void init() {
+        this.usuario = "Luanderson";
+        this.saldo = "200";
     }
 
-    public String getText() {
-        return text;
+   public String usuarioLogado(){
+
+       return this.usuario;
+   }
+
+   public String saldoUsuario(){
+
+       return this.saldo;
+   }
+
+    public ControladorHome() {
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(String saldo) {
+        this.saldo = saldo;
+    }
 }
